@@ -1,25 +1,9 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
-#include <time.h>
+#include "film.h"
 
-#define _CRT_SECURE_NO_WARNINGS 1
-
-#define MAX_NAME 50
-#define MAX_DIRECTOR 50
-#define MAX_COUNTRY 50
-#define MAX_GENRE 50
 #define ARRAY_SIZE 10
-
-struct film {
-    char name[MAX_NAME];
-    char director[MAX_DIRECTOR];
-    int year;
-    char country[MAX_COUNTRY];
-    double price;
-    double profit;
-    char genre[MAX_GENRE];
-};
 
 void print(struct film* s) {
     printf("%s:%s:%d:%s:%lf:%lf:%s\n", s->name, s->director, s->year, s->country, s->price, s->profit, s->genre);
@@ -65,20 +49,4 @@ struct film* readFileToArr(FILE* fptr) {
         memset(line, 0, sizeof(line));
     }
     return arr;
-}
-
-void printNewFilms(struct film* arr) {
-    printf("--------------------\n");
-    for (int j = 0; j < ARRAY_SIZE; j++) {
-        if (arr[j].year >= 2018 && (strstr(arr[j].genre, "child") != NULL || strstr(arr[j].genre, "Child") != NULL)) {
-            print(&(arr[j]));
-        }
-    }
-}
-
-int main()
-{
-    FILE* fptr = fopen("file.txt", "r");
-    struct film* arr = readFileToArr(fptr);
-    printNewFilms(arr);
 }
