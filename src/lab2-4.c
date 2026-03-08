@@ -17,10 +17,13 @@ void printNewFilms(struct film* arr, FILE* outptr) {
     }
 }
 
-int main()
+int main(int argc, char* argv[])
 {
-    FILE* fptr = fopen("file.txt", "r");
-    FILE* outptr = fopen("output.txt", "w");
-    struct film* arr = readFileToArr(fptr);
-    printNewFilms(arr, outptr);
+    if (argc == 1) {
+	FILE* fptr = fopen("file.txt", "r");
+	struct film* arr = readFileToArr(fptr);
+        FILE* outptr = fopen("output.txt", "w");
+        printNewFilms(arr, outptr);
+    }
+    return 0;
 }

@@ -7,4 +7,4 @@ clean:
 	del $(wildcard *.exe)
 
 run:
-	./executable
+	./executable 1
