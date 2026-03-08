@@ -9,6 +9,10 @@ void print(struct film* s) {
     printf("%s:%s:%d:%s:%lf:%lf:%s\n", s->name, s->director, s->year, s->country, s->price, s->profit, s->genre);
 }
 
+void printToFile(struct film* s, FILE* outptr) {
+    fprintf(outptr, "%s:%s:%d:%s:%lf:%lf:%s\n", s->name, s->director, s->year, s->country, s->price, s->profit, s->genre);
+}
+
 struct film* readFileToArr(FILE* fptr) {
     struct film* arr = calloc(ARRAY_SIZE, sizeof(struct film));
     int i = 0;
